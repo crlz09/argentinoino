@@ -10,28 +10,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <TextView
-            android:id="@+id/mensaje_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+        android:textSize="18sp"
+        android:text="Nombre de la App"/>
 
-        <TextView
-            android:id="@+id/mensaje_id2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/rplateeee"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="boton"
-            android:id="@+id/botoncito"/>
+            android:text="Buscá en todas partes"
+            android:id="@+id/btnGeneral"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscá cerca de vos"
+            android:id="@+id/btnCerca"/>
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

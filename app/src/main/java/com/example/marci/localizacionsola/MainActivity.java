@@ -18,30 +18,71 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    TextView mensaje1;
-    TextView mensaje2;
-    Button btn;
+    /*TextView mensaje1;
+    TextView mensaje2;*/
+public Double lon, lat;
+String direccion, Text,locat;
+Button general, cerca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.setTitle("SeLoMamoAlRiver");
 //vacila maldita puta
-        mensaje1 = (TextView) findViewById(R.id.mensaje_id);
+       /* mensaje1 = (TextView) findViewById(R.id.mensaje_id);
         mensaje2 = (TextView) findViewById(R.id.mensaje_id2);
-
+*/
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
             locationStart();
         }
+
+        general= (Button) findViewById(R.id.btnGeneral);
+        cerca=(Button) findViewById(R.id.btnCerca);
+        final Boolean[] cercano = {false};
+
+        general.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //intent de categoria
+
+                Intent vete = new Intent(getApplicationContext(),categorias.class);
+                cercano[0] =true;
+                vete.putExtra("cercano", cercano[0]);
+                startActivity(vete);
+            }
+        });
+
+
+
+        cerca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //intent de categoria
+
+                Intent vete = new Intent(getApplicationContext(),categorias.class);
+                cercano[0] =true;
+                vete.putExtra("cercano", cercano[0]);
+                vete.putExtra("latitud",lat);
+                vete.putExtra("longitud",lon);
+                vete.putExtra("direccion",direccion);
+                startActivity(vete);
+            }
+        });
+
+
     }
+
+
 
     private void locationStart() {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -59,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
         mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) Local);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) Local);
 
-        mensaje1.setText("Localización agregada");
-        mensaje2.setText("");
+       /* mensaje1.setText("Localización agregada");
+        mensaje2.setText("");*/
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -75,14 +116,18 @@ public class MainActivity extends AppCompatActivity {
     public void setLocation(Location loc) {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            lon=loc.getLongitude();
+            lat=loc.getLatitude();
+
+            Toast.makeText(this, "Lon: "+lon + "Lat: "+lat, Toast.LENGTH_LONG).show();
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocation(
                         loc.getLatitude(), loc.getLongitude(), 1);
                 if (!list.isEmpty()) {
                     Address DirCalle = list.get(0);
-                    mensaje2.setText("Mi direccion es: \n"
-                            + DirCalle.getAddressLine(0));
+                    direccion="Mi direccion es: \n"
+                            + DirCalle.getAddressLine(0);
                 }
 
             } catch (IOException e) {
@@ -110,22 +155,22 @@ public class MainActivity extends AppCompatActivity {
             loc.getLatitude();
             loc.getLongitude();
 
-            String Text = "Mi ubicacion actual es: " + "\n Lat = "
+            Text = "Mi ubicacion actual es: " + "\n Lat = "
                     + loc.getLatitude() + "\n Long = " + loc.getLongitude();
-            mensaje1.setText(Text);
+           // mensaje1.setText(Text);
             this.mainActivity.setLocation(loc);
         }
 
         @Override
         public void onProviderDisabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es desactivado
-            mensaje1.setText("GPS Desactivado");
+         //   mensaje1.setText("GPS Desactivado");
         }
 
         @Override
         public void onProviderEnabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es activado
-            mensaje1.setText("GPS Activado");
+           // mensaje1.setText("GPS Activado");
         }
 
         @Override
