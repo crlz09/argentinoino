@@ -2,44 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:id="@+id/TVmain">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-        android:textSize="18sp"
-        android:text="Nombre de la App"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/rplateeee"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:textSize="24sp"
+        android:text="Selecciona una opción:"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="350dp"/>
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buscá en todas partes"
             android:id="@+id/btnGeneral"
-            android:layout_marginBottom="10dp"/>
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Buscá en todas partes"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnCerca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Buscá cerca de vos"
-            android:id="@+id/btnCerca"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

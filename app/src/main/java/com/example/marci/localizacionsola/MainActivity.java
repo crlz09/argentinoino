@@ -4,12 +4,16 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -17,8 +21,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
 public Double lon, lat;
 String direccion, Text,locat;
 Button general, cerca;
-
+LinearLayout tvmain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setTitle("SeLoMamoAlRiver");
+        this.setTitle("Mi App de Búsqueda");
+        tvmain = (LinearLayout) findViewById(R.id.TVmain);
 //vacila maldita puta
        /* mensaje1 = (TextView) findViewById(R.id.mensaje_id);
         mensaje2 = (TextView) findViewById(R.id.mensaje_id2);
@@ -48,6 +58,20 @@ Button general, cerca;
 
         general= (Button) findViewById(R.id.btnGeneral);
         cerca=(Button) findViewById(R.id.btnCerca);
+        Glide.with(getApplicationContext()).load(R.drawable.fnd).asBitmap().into(new SimpleTarget<Bitmap>() {
+
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                Drawable drawable = new BitmapDrawable(resource);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    tvmain.setBackground(drawable);
+                }
+            }
+        });
+
+
+
+
+
         final Boolean[] cercano = {false};
 
         general.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +143,7 @@ Button general, cerca;
             lon=loc.getLongitude();
             lat=loc.getLatitude();
 
-            Toast.makeText(this, "Lon: "+lon + "Lat: "+lat, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Lon: "+lon + "Lat: "+lat, Toast.LENGTH_LONG).show();
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocation(

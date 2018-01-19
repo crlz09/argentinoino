@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">localizacionSOLA</string>
     <string name="title_activity_categorias">categorias</string>
+    <string name="title_activity_subcategoria">subcategoria</string>
 </resources>

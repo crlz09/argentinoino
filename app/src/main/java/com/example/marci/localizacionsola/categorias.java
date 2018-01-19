@@ -33,9 +33,9 @@ public class categorias extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Toast.makeText(this, "Selecciona una categoría", Toast.LENGTH_LONG).show();
-        this.setTitle("Selecciona");
-String direccion;
-Double lat, lon;
+        this.setTitle("Selecciona una categoría:");
+    String direccion;
+    Double lat, lon;
 
         Boolean cercano = getIntent().getExtras().getBoolean("cercano");
 
@@ -114,11 +114,23 @@ Double lat, lon;
             categoria.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-            /*        String nom = nombre.getText().toString();
-                    Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
-                    Intent vete = new Intent(getApplicationContext(),cercanos.class);
-                    vete.putExtra("categoria",nom);
-                    startActivity(vete);*/
+                    if ((nombre.getText().toString().equals("Comercios / Productos")) ||
+                            (nombre.getText().toString().equals("Servicios"))){
+                        // subcategorias
+                        String nom = nombre.getText().toString();
+                        Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
+                        Intent vete = new Intent(getApplicationContext(),subcategoria.class);
+                        vete.putExtra("categoria",nom);
+                        startActivity(vete);
+
+                    } else {
+                        //todos los normales con intent de grid!
+                        String nom = nombre.getText().toString();
+                        Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
+                        Intent vete = new Intent(getApplicationContext(),cercanos.class);
+                        vete.putExtra("categoria",nom);
+                        startActivity(vete);
+                    }
                 }
             });
             categoriasss.addView(categoria);
