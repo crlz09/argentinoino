@@ -1,5 +1,6 @@
 package com.example.marci.localizacionsola;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +28,11 @@ public class cercanos extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(cercanos.this, "Tocaste un grid", Toast.LENGTH_SHORT).show();
+                Intent vete = new Intent(getApplicationContext(),perfil.class);
+               // vete.putExtra("categoria",nom);
+                //jugar con "int position", el es el que dice cual tocaste, jalar los datos del
+                //array correspondiente (?) y pasarlos a la activity perfil
+                startActivity(vete);
             }
         });
 
