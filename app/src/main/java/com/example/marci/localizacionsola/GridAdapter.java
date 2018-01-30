@@ -20,6 +20,10 @@ import com.bumptech.glide.request.target.SimpleTarget;
  */
 
 public class    GridAdapter extends BaseAdapter {
+    public String nom, correo, telefono, ciu ,dist;
+    public int drawid;
+
+
     private Context context;
 
     public GridAdapter(Context context) {
@@ -73,9 +77,15 @@ public class    GridAdapter extends BaseAdapter {
 
         pinImagen.setImageResource(item.getIdUbi());
         nombre.setText(item.getNombre());
+        nom=nombre.getText().toString();
         descripcion.setText(item.getProfesion());
+        drawid=item.getIdDrawable();
+
         ciudad.setText(item.getCiudad());
+        ciu=ciudad.getText().toString();
         distancia.setText(item.getDistancia());
+        dist=distancia.getText().toString();
+
         return view;
     }
 

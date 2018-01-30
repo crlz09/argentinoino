@@ -56,7 +56,7 @@ public class elementoscercanos {
 
 
     public static elementoscercanos[] ITEMS = {
-            new elementoscercanos("Primer Lugar", R.drawable.resuno, "Cafe", "Buenos Aires", "11km", R.drawable.pin),
+            new elementoscercanos("Primer Lugar", R.drawable.paris, "Cafe", "Buenos Aires", "11km", R.drawable.pin),
             new elementoscercanos("Segundo Lugar", R.drawable.resdos,"Restaurant", "Buenos Aires", "14km", R.drawable.pin),
             new elementoscercanos("Tercer Lugar", R.drawable.restres,"Restaurant", "Buenos Aires", "21km", R.drawable.pin),
             new elementoscercanos("Cuarto Lugar", R.drawable.rescuatro,"Cafe", "Buenos Aires", "22km", R.drawable.pin),
