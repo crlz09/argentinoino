@@ -1,48 +1,112 @@
-package com.example.marci.localizacionsola;
+package com.example.marci.argenteam;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class Busqueda extends AppCompatActivity {
-    TextView mensaje1;
-    TextView mensaje2;
-    Button btn;
-
+public class MainActivity extends AppCompatActivity {
+    /*TextView mensaje1;
+    TextView mensaje2;*/
+public Double lon, lat;
+String direccion, Text,locat;
+Button general, cerca;
+LinearLayout tvmain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mensaje1 = (TextView) findViewById(R.id.mensaje_id);
+        this.setTitle("Mi App de Búsqueda");
+        tvmain = (LinearLayout) findViewById(R.id.TVmain);
+//vacila maldita puta
+       /* mensaje1 = (TextView) findViewById(R.id.mensaje_id);
         mensaje2 = (TextView) findViewById(R.id.mensaje_id2);
-        btn = (Button) findViewById(R.id.botoncito);
-
-
+*/
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
             locationStart();
         }
+
+        general= (Button) findViewById(R.id.btnGeneral);
+        cerca=(Button) findViewById(R.id.btnCerca);
+        Glide.with(getApplicationContext()).load(R.drawable.fnd).asBitmap().into(new SimpleTarget<Bitmap>() {
+
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                Drawable drawable = new BitmapDrawable(resource);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    tvmain.setBackground(drawable);
+                }
+            }
+        });
+
+
+
+
+
+        final Boolean[] cercano = {false};
+
+        general.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //intent de categoria
+
+                Intent vete = new Intent(getApplicationContext(),categorias.class);
+                cercano[0] =true;
+
+                vete.putExtra("cercano", cercano[0]);
+                startActivity(vete);
+            }
+        });
+
+
+
+        cerca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //intent de categoria
+
+                Intent vete = new Intent(getApplicationContext(),categorias.class);
+                cercano[0] =true;
+                vete.putExtra("cercano", cercano[0]);
+                vete.putExtra("latitud",lat);
+                vete.putExtra("longitud",lon);
+                vete.putExtra("direccion",direccion);
+                startActivity(vete);
+            }
+        });
+
+
     }
+
+
 
     private void locationStart() {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -60,8 +124,8 @@ public class Busqueda extends AppCompatActivity {
         mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) Local);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) Local);
 
-        mensaje1.setText("Localización agregada");
-        mensaje2.setText("");
+       /* mensaje1.setText("Localización agregada");
+        mensaje2.setText("");*/
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -76,14 +140,19 @@ public class Busqueda extends AppCompatActivity {
     public void setLocation(Location loc) {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            lon=loc.getLongitude();
+            lat=loc.getLatitude();
+
+
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocation(
                         loc.getLatitude(), loc.getLongitude(), 1);
                 if (!list.isEmpty()) {
                     Address DirCalle = list.get(0);
-                    mensaje2.setText("Mi direccion es: \n"
-                            + DirCalle.getAddressLine(0));
+                    direccion="Mi direccion es: \n"
+                            + DirCalle.getAddressLine(0);
+                    Toast.makeText(this, "Lon: "+lon + "\n" + "Lat: "+lat + "\n" + "\n" + direccion, Toast.LENGTH_LONG).show();
                 }
 
             } catch (IOException e) {
@@ -93,13 +162,13 @@ public class Busqueda extends AppCompatActivity {
     }
     /* Aqui empieza la Clase Localizacion */
     public class Localizacion implements LocationListener {
-        Busqueda mainActivity;
+        MainActivity mainActivity;
 
-        public Busqueda getMainActivity() {
+        public MainActivity getMainActivity() {
             return mainActivity;
         }
 
-        public void setMainActivity(Busqueda mainActivity) {
+        public void setMainActivity(MainActivity mainActivity) {
             this.mainActivity = mainActivity;
         }
 
@@ -111,22 +180,22 @@ public class Busqueda extends AppCompatActivity {
             loc.getLatitude();
             loc.getLongitude();
 
-            String Text = "Mi ubicacion actual es: " + "\n Lat = "
+            Text = "Mi ubicacion actual es: " + "\n Lat = "
                     + loc.getLatitude() + "\n Long = " + loc.getLongitude();
-            mensaje1.setText(Text);
+           // mensaje1.setText(Text);
             this.mainActivity.setLocation(loc);
         }
 
         @Override
         public void onProviderDisabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es desactivado
-            mensaje1.setText("GPS Desactivado");
+         //   mensaje1.setText("GPS Desactivado");
         }
 
         @Override
         public void onProviderEnabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es activado
-            mensaje1.setText("GPS Activado");
+           // mensaje1.setText("GPS Activado");
         }
 
         @Override

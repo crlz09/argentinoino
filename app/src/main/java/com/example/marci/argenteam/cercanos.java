@@ -1,4 +1,4 @@
-package com.example.marci.localizacionsola;
+package com.example.marci.argenteam;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 /**
  * Created by carlosm on 09/01/2018.

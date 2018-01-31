@@ -1,4 +1,4 @@
-package com.example.marci.localizacionsola;
+package com.example.marci.argenteam;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;

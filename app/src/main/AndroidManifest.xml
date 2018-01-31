@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.marci.localizacionsola">
+    package="com.example.marci.argenteam">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,28 +14,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.marci.argenteam.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Busqueda" />
+        <activity android:name="com.example.marci.argenteam.Busqueda" />
         <activity
-            android:name=".cercanos"
+            android:name="com.example.marci.argenteam.cercanos"
             android:label="cercanos"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".categorias"
+            android:name="com.example.marci.argenteam.categorias"
             android:label="@string/title_activity_categorias"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".subcategoria"
+            android:name="com.example.marci.argenteam.subcategoria"
             android:label="@string/title_activity_subcategoria"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".perfil"
+            android:name="com.example.marci.argenteam.perfil"
             android:label="@string/title_activity_perfil"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
