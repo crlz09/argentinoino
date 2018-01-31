@@ -118,7 +118,7 @@ public class categorias extends AppCompatActivity {
                             (nombre.getText().toString().equals("Servicios"))){
                         // subcategorias
                         String nom = nombre.getText().toString();
-                        Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
                         Intent vete = new Intent(getApplicationContext(),subcategoria.class);
                         vete.putExtra("categoria",nom);
                         startActivity(vete);
@@ -126,7 +126,7 @@ public class categorias extends AppCompatActivity {
                     } else {
                         //todos los normales con intent de grid!
                         String nom = nombre.getText().toString();
-                        Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(categorias.this, ""+nom, Toast.LENGTH_SHORT).show();
                         Intent vete = new Intent(getApplicationContext(),cercanos.class);
                         vete.putExtra("categoria",nom);
                         startActivity(vete);

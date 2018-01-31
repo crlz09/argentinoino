@@ -1,5 +1,6 @@
 package com.example.marci.localizacionsola;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -9,7 +10,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +52,10 @@ ImageView ivperfil;
         ivperfil= (ImageView) findViewById(R.id.IVperfil);
         Drawable drawable =getResources().getDrawable(idimagen);
 
-        Glide.with(getApplicationContext()).load("").placeholder(idimagen).override(600,200).into(ivperfil);
+
+
+
+        Glide.with(getApplicationContext()).load("").placeholder(idimagen).override(600,300).into(ivperfil);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

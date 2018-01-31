@@ -172,7 +172,7 @@ public class subcategoria extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                    String nom = nombre.getText().toString();
-                    Toast.makeText(subcategoria.this, ""+nom, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(subcategoria.this, ""+nom, Toast.LENGTH_SHORT).show();
                     Intent vete = new Intent(getApplicationContext(),cercanos.class);
                     vete.putExtra("categoria",nom);
                     startActivity(vete);

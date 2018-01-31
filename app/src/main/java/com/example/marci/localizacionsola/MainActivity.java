@@ -81,6 +81,7 @@ LinearLayout tvmain;
 
                 Intent vete = new Intent(getApplicationContext(),categorias.class);
                 cercano[0] =true;
+
                 vete.putExtra("cercano", cercano[0]);
                 startActivity(vete);
             }
@@ -143,7 +144,7 @@ LinearLayout tvmain;
             lon=loc.getLongitude();
             lat=loc.getLatitude();
 
-            //Toast.makeText(this, "Lon: "+lon + "Lat: "+lat, Toast.LENGTH_LONG).show();
+
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocation(
@@ -152,6 +153,7 @@ LinearLayout tvmain;
                     Address DirCalle = list.get(0);
                     direccion="Mi direccion es: \n"
                             + DirCalle.getAddressLine(0);
+                    Toast.makeText(this, "Lon: "+lon + "\n" + "Lat: "+lat + "\n" + "\n" + direccion, Toast.LENGTH_LONG).show();
                 }
 
             } catch (IOException e) {

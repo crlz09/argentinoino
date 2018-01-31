@@ -38,7 +38,7 @@ public class cercanos extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final elementoscercanos item = getItem(position);
 
-                Toast.makeText(cercanos.this, "Tocaste un grid", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(cercanos.this, "Tocaste un grid", Toast.LENGTH_SHORT).show();
                 Intent vete = new Intent(getApplicationContext(),perfil.class);
                 vete.putExtra("desc","No lo decimnos nosotros, lo dicen nuestros clientes: " +
                         "EL MEJOR ESTABLECIMIENTO DE LA CIUDAD!");

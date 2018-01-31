@@ -50,7 +50,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@id/ivInfo"
                     android:layout_toRightOf="@id/ivInfo"
-                    android:text="Aqui va la info de la empresa bla bla"
+                    android:text="Aqui va la informacion de la empresa, su especialidad, una breve reseña del establecimiento"
                     android:id="@+id/tvInfoEmpresa"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="#727272" />

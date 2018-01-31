@@ -56,13 +56,13 @@ public class elementoscercanos {
 
 
     public static elementoscercanos[] ITEMS = {
-            new elementoscercanos("Primer Lugar", R.drawable.paris, "Cafe", "Buenos Aires", "11km", R.drawable.pin),
-            new elementoscercanos("Segundo Lugar", R.drawable.resdos,"Restaurant", "Buenos Aires", "14km", R.drawable.pin),
-            new elementoscercanos("Tercer Lugar", R.drawable.restres,"Restaurant", "Buenos Aires", "21km", R.drawable.pin),
-            new elementoscercanos("Cuarto Lugar", R.drawable.rescuatro,"Cafe", "Buenos Aires", "22km", R.drawable.pin),
-            new elementoscercanos("Quinto Lugar", R.drawable.rescinco,"Restaurant", "Buenos Aires", "25km", R.drawable.pin),
-            new elementoscercanos("Sexto Lugar", R.drawable.resseis,"Cafe", "Buenos Aires", "28km", R.drawable.pin),
-            new elementoscercanos("Septimo Lugar", R.drawable.ressiete,"Cafe", "Buenos Aires", "30km", R.drawable.pin),
+            new elementoscercanos("Primer Lugar", R.drawable.finalnueve, "Cafe", "Buenos Aires", "11km", R.drawable.pin),
+            new elementoscercanos("Segundo Lugar", R.drawable.finaldos,"Restaurant", "Buenos Aires", "14km", R.drawable.pin),
+            new elementoscercanos("Tercer Lugar", R.drawable.finaltres,"Restaurant", "Buenos Aires", "21km", R.drawable.pin),
+            new elementoscercanos("Cuarto Lugar", R.drawable.finalcuatro,"Cafe", "Buenos Aires", "22km", R.drawable.pin),
+            new elementoscercanos("Quinto Lugar", R.drawable.finalcinco,"Restaurant", "Buenos Aires", "25km", R.drawable.pin),
+            new elementoscercanos("Sexto Lugar", R.drawable.finalseis,"Cafe", "Buenos Aires", "28km", R.drawable.pin),
+            new elementoscercanos("Septimo Lugar", R.drawable.finalocho,"Cafe", "Buenos Aires", "30km", R.drawable.pin),
     };
 
     /**
