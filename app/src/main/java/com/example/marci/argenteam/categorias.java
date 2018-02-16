@@ -86,6 +86,16 @@ public class categorias extends AppCompatActivity {
 
         categoriasss = (LinearLayout) findViewById(R.id.raizcat);
 
+
+        LinearLayout aiuda = (LinearLayout) findViewById(R.id.LLayuda);
+
+        ViewGroup.LayoutParams params1 = aiuda.getLayoutParams();
+        params1.height =Math.round(170*(Resources.getSystem().getDisplayMetrics().xdpi/DisplayMetrics.DENSITY_DEFAULT));;
+        params1.width = ViewGroup.LayoutParams.MATCH_PARENT;
+
+        aiuda.setLayoutParams(params1);
+
+
         for (int i=0; i<nombres.size();i++){
             categoria = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.categoria,null);
 

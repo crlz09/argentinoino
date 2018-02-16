@@ -43,10 +43,10 @@ ImageView ivperfil;
         ivperfil= (ImageView) findViewById(R.id.IVperfil);
         Drawable drawable =getResources().getDrawable(idimagen);
 
+        descripcion.setText("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam magni consequatur architecto nobis neque atque, officia laudantium cum dolore tempora eius nam repudiandae blanditiis consectetur");
 
 
-
-        Glide.with(getApplicationContext()).load("").placeholder(idimagen).override(600,300).into(ivperfil);
+        Glide.with(getApplicationContext()).load("").placeholder(idimagen).centerCrop().into(ivperfil);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
