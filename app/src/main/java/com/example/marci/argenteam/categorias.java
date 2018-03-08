@@ -38,8 +38,8 @@ public class categorias extends AppCompatActivity {
              direccion = getIntent().getExtras().getString("direccion");
              lat =  getIntent().getExtras().getDouble("latitud");
              lon =  getIntent().getExtras().getDouble("longitud");
-          /*  Toast.makeText(this, "Mi direccion es: "+lat + "\n" + "lon: "+ lon +"\n"
-                    +direccion, Toast.LENGTH_LONG).show();*/
+          Toast.makeText(this, "Mi direccion es: "+lat + "\n" + "lon: "+ lon +"\n"
+                    +direccion, Toast.LENGTH_LONG).show();
         }
 
         ArrayList<Integer> imagenes= new ArrayList();
