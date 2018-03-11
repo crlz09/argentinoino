@@ -43,7 +43,7 @@ LinearLayout tvmain;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setTitle("Mi App de Búsqueda");
+        this.setTitle("Argendapp");
         tvmain = (LinearLayout) findViewById(R.id.TVmain);
 //vacila maldita puta
        /* mensaje1 = (TextView) findViewById(R.id.mensaje_id);
@@ -57,7 +57,7 @@ LinearLayout tvmain;
 
         general= (Button) findViewById(R.id.btnGeneral);
         cerca=(Button) findViewById(R.id.btnCerca);
-        Glide.with(getApplicationContext()).load(R.drawable.fnd).asBitmap().into(new SimpleTarget<Bitmap>() {
+/*        Glide.with(getApplicationContext()).load(R.drawable.fnd).asBitmap().into(new SimpleTarget<Bitmap>() {
 
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 Drawable drawable = new BitmapDrawable(resource);
@@ -65,7 +65,7 @@ LinearLayout tvmain;
                     tvmain.setBackground(drawable);
                 }
             }
-        });
+        });*/
 
 
 

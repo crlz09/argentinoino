@@ -1,8 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,15 +12,21 @@
         android:gravity="center"
         android:id="@+id/TVmain">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:textSize="24sp"
-        android:text="Selecciona una opción:"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="350dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/argenlogo">
+        </ImageView>
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="top"
+            android:text="Selecciona una opción:"
+            android:textColor="@color/oscuro"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnGeneral"
@@ -28,10 +35,11 @@
             android:layout_marginBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"
             android:paddingRight="5dp"
             android:text="Buscá en todas partes"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnCerca"
@@ -41,11 +49,11 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="Buscá cerca de vos"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
 
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

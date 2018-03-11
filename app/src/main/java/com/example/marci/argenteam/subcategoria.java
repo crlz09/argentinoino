@@ -2,6 +2,7 @@ package com.example.marci.argenteam;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -11,9 +12,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,9 @@ public class subcategoria extends AppCompatActivity {
 
 
 
-        String cat =  getIntent().getExtras().getString("categoria");
+        String cat =  getIntent().getExtras().getString("nombre");
+        final String clave =  getIntent().getExtras().getString("clave");
+
         this.setTitle(cat);
    /*     String direccion;
         Double lat, lon;
@@ -48,29 +54,30 @@ public class subcategoria extends AppCompatActivity {
 
         // definir los arrays de cada categoría
 
-        ArrayList<String> nombres = new ArrayList();
+        final ArrayList<String> nombres = new ArrayList();
         ArrayList<Integer> imagenes= new ArrayList();
-        ArrayList<String> descripcion = new ArrayList();
+        final ArrayList<String> descripcion = new ArrayList();
 
-        if (cat.equals("Comercios / Productos")){
+        if (clave.equals("Comercios / Productos")){
 
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
+            imagenes.add(R.drawable.almacenes);
+            imagenes.add(R.drawable.kioskos);
+            imagenes.add(R.drawable.fiambrerias);
+            imagenes.add(R.drawable.granjas);
+            imagenes.add(R.drawable.pizzerias);
+            imagenes.add(R.drawable.heladerias);
+            imagenes.add(R.drawable.puestos_librerias);
+            imagenes.add(R.drawable.locutorios);
+            imagenes.add(R.drawable.ferreterias);
+            imagenes.add(R.drawable.mueblerias);
+            imagenes.add(R.drawable.concesionarias);
+            imagenes.add(R.drawable.casas_de_repuestos);
+            imagenes.add(R.drawable.gimnasios);
+            imagenes.add(R.drawable.opticas_farmacias);
+            imagenes.add(R.drawable.electronica);
+            imagenes.add(R.drawable.ropa_accesorios);
+            imagenes.add(R.drawable.emprendimientos);
+            imagenes.add(R.drawable.otros);
 
             nombres.add("Almacenes / mercados / panaderías");
             nombres.add("Kioscos / 24 hs / polirrubros");
@@ -89,36 +96,39 @@ public class subcategoria extends AppCompatActivity {
             nombres.add("Electrónica / tecnología");
             nombres.add("Ropa y accesorios");
             nombres.add("Emprendimientos / artesanías / feriantes");
+            nombres.add("Otros");
 
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
+
+            descripcion.add("ALMACENES");
+            descripcion.add("KIOSKOS");
+            descripcion.add("FIAMBRERIAS");
+            descripcion.add("GRANJAS");
+            descripcion.add("PIZZERIAS");
+            descripcion.add("HELADERIAS");
+            descripcion.add("PUESTOS");
+            descripcion.add("LOCUTORIOS");
+            descripcion.add("FERRETERIAS");
+            descripcion.add("MUEBLERIAS");
+            descripcion.add("CONCESIONARIAS");
+            descripcion.add("CASAS DE REPUESTOS");
+            descripcion.add("GIMNASIOS");
+            descripcion.add("OPTICAS");
+            descripcion.add("ELECTRONICA");
+            descripcion.add("ROPA");
+            descripcion.add("EMPRENDIMIENTO");
+            descripcion.add("OTROSP");
 
         } else {
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
-            imagenes.add(R.drawable.imagendos);
-            imagenes.add(R.drawable.imagentres);
-            imagenes.add(R.drawable.imagenuno);
+            imagenes.add(R.drawable.servicios_hogar);
+            imagenes.add(R.drawable.profesionales);
+            imagenes.add(R.drawable.cuidado_personas);
+            imagenes.add(R.drawable.servicios_mascotas);
+            imagenes.add(R.drawable.estetica);
+            imagenes.add(R.drawable.mantenimiento);
+            imagenes.add(R.drawable.tecnicos);
+            imagenes.add(R.drawable.profesores_particulares);
+            imagenes.add(R.drawable.eventos);
+            imagenes.add(R.drawable.otros);
 
 
             nombres.add("Servicios para el hogar");
@@ -132,47 +142,47 @@ public class subcategoria extends AppCompatActivity {
             nombres.add("Eventos");
             nombres.add("Otros");
 
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
-            descripcion.add("Tngrese una descripción de la categoría");
+            descripcion.add("HOGAR");
+            descripcion.add("PROFESIONALES");
+            descripcion.add("CUIDADO");
+            descripcion.add("MASCOTAS");
+            descripcion.add("ESTETICA");
+            descripcion.add("MANTENIMIENTO");
+            descripcion.add("TECNICOS");
+            descripcion.add("PROFESORES");
+            descripcion.add("EVENTOS");
+            descripcion.add("OTROSS");
+
         }
 
-        categoriasss = (LinearLayout) findViewById(R.id.raizcat);
+        categoriasss = findViewById(R.id.raizcat);
 
-        for (int i=0; i<nombres.size();i++){
-            categoria = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.categoria,null);
-
-
-            LinearLayout base= (LinearLayout) categoria.findViewById(R.id.baseCAT);
+        for (int i = 0; i < imagenes.size(); i++) {
+            categoria = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.categoria, null);
+            ImageView base = categoria.findViewById(R.id.baseCAT);
             ViewGroup.LayoutParams params = base.getLayoutParams();
-            params.height =Math.round(170*(Resources.getSystem().getDisplayMetrics().xdpi/ DisplayMetrics.DENSITY_DEFAULT));;
-            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
 
-            base.setLayoutParams(params);
+            int dp = (int) (170 * getApplicationContext().getResources().getDisplayMetrics().density + 0.5f);
 
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    /*width*/ ViewGroup.LayoutParams.MATCH_PARENT,
+                   /*height*/ dp
+            );
+            base.setLayoutParams(param);
 
-            final TextView nombre = (TextView) categoria.findViewById(R.id.nombreCAT);
-            TextView desc = (TextView) categoria.findViewById(R.id.desCAT);
-            base.setBackground(getResources().getDrawable(imagenes.get(i)));
-            nombre.setText(nombres.get(i));
-            desc.setText(descripcion.get(i));
+            Glide.with(getApplicationContext()).load(imagenes.get(i)).asBitmap().centerCrop().into(base);
+
 
 
             final int finalI = i;
             categoria.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   String nom = nombre.getText().toString();
+                //   String nom = nombre.getText().toString();
                  //   Toast.makeText(subcategoria.this, ""+nom, Toast.LENGTH_SHORT).show();
                     Intent vete = new Intent(getApplicationContext(),cercanos.class);
-                    vete.putExtra("categoria",nom);
+                    vete.putExtra("categoria",nombres.get(finalI));
+                    vete.putExtra("descripcion",descripcion.get(finalI));
                     startActivity(vete);
                 }
             });

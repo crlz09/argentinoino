@@ -25,6 +25,7 @@ public class cercanos extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String titulo = getIntent().getExtras().getString("categoria");
+        String clave= getIntent().getExtras().getString("descripcion");
         this.setTitle(titulo);
         final GridView gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(new GridAdapter(getApplicationContext()));
