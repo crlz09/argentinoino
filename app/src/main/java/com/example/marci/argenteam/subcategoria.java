@@ -1,5 +1,6 @@
 package com.example.marci.argenteam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.Image;
@@ -21,8 +22,15 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class subcategoria extends AppCompatActivity {
     LinearLayout categoria,categoriasss;
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -33,6 +41,11 @@ public class subcategoria extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Toast.makeText(this, "Selecciona una Subcategoría", Toast.LENGTH_LONG).show();
 
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/cabo.otf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
 
 
         String cat =  getIntent().getExtras().getString("nombre");
@@ -58,7 +71,7 @@ public class subcategoria extends AppCompatActivity {
         ArrayList<Integer> imagenes= new ArrayList();
         final ArrayList<String> descripcion = new ArrayList();
 
-        if (clave.equals("Comercios / Productos")){
+        if (clave.equals("COMERCIOS")){
 
             imagenes.add(R.drawable.almacenes);
             imagenes.add(R.drawable.kioskos);

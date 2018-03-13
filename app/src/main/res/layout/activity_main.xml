@@ -26,7 +26,8 @@
             android:gravity="top"
             android:text="Selecciona una opción:"
             android:textColor="@color/oscuro"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:id="@+id/encabezado"/>
 
         <Button
             android:id="@+id/btnGeneral"

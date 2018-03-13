@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -32,6 +34,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class MainActivity extends AppCompatActivity {
     /*TextView mensaje1;
     TextView mensaje2;*/
@@ -39,16 +44,26 @@ public Double lon, lat;
 String direccion, Text,locat;
 Button general, cerca;
 LinearLayout tvmain;
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setTitle("Argendapp");
+
+
+
+
         tvmain = (LinearLayout) findViewById(R.id.TVmain);
-//vacila maldita puta
-       /* mensaje1 = (TextView) findViewById(R.id.mensaje_id);
-        mensaje2 = (TextView) findViewById(R.id.mensaje_id2);
-*/
+        TextView encabezado= findViewById(R.id.encabezado);
+        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/cabo.otf");
+
+        encabezado.setTypeface(face);
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
@@ -57,6 +72,14 @@ LinearLayout tvmain;
 
         general= (Button) findViewById(R.id.btnGeneral);
         cerca=(Button) findViewById(R.id.btnCerca);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/cabo.otf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+        general.setTypeface(face);
+        cerca.setTypeface(face);
 /*        Glide.with(getApplicationContext()).load(R.drawable.fnd).asBitmap().into(new SimpleTarget<Bitmap>() {
 
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -152,7 +175,7 @@ LinearLayout tvmain;
                     Address DirCalle = list.get(0);
                     direccion="Mi direccion es: \n"
                             + DirCalle.getAddressLine(0);
-                    Toast.makeText(this, "Lon: "+lon + "\n" + "Lat: "+lat + "\n" + "\n" + direccion, Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(this, "Lon: "+lon + "\n" + "Lat: "+lat + "\n" + "\n" + direccion, Toast.LENGTH_LONG).show();
                 }
 
             } catch (IOException e) {

@@ -34,6 +34,7 @@
                     android:paddingTop="2dp"
                     android:text="Nombre"
                     android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:textSize="16sp" />
 
                 <TextView
@@ -46,6 +47,7 @@
                     android:paddingTop="2dp"
                     android:text="Rating"
                     android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:textSize="14sp" />
 
                 <TextView
@@ -56,8 +58,9 @@
                     android:maxLines="1"
                     android:paddingLeft="5dp"
                     android:paddingTop="2dp"
-                    android:text="iudad"
+                    android:text="Ciudad"
                     android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -80,6 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:maxLines="1"
                     android:text="Distancia"
                     android:textColor="#FFFFFF"

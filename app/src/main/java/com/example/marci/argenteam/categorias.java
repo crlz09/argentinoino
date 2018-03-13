@@ -1,5 +1,6 @@
 package com.example.marci.argenteam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.Image;
@@ -21,8 +22,16 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class categorias extends AppCompatActivity {
     LinearLayout categoria,categoriasss;
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -35,6 +44,11 @@ public class categorias extends AppCompatActivity {
         this.setTitle("Selecciona una categoría:");
         String direccion;
         Double lat, lon;
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/cabo.otf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
 
         Boolean cercano = getIntent().getExtras().getBoolean("cercano");
 
@@ -42,8 +56,8 @@ public class categorias extends AppCompatActivity {
             direccion = getIntent().getExtras().getString("direccion");
             lat = getIntent().getExtras().getDouble("latitud");
             lon = getIntent().getExtras().getDouble("longitud");
-            Toast.makeText(this, "Mi direccion es: " + lat + "\n" + "lon: " + lon + "\n"
-                    + direccion, Toast.LENGTH_LONG).show();
+           /* Toast.makeText(this, "Mi direccion es: " + lat + "\n" + "lon: " + lon + "\n"
+                    + direccion, Toast.LENGTH_LONG).show();*/
         }
 
         ArrayList<Integer> imagenes = new ArrayList();

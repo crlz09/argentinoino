@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_scrollFlags="enterAlways"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:layout_marginTop="@dimen/action_bar">
 
 
     <GridView

@@ -2,6 +2,7 @@ package com.example.marci.argenteam;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -18,14 +19,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class perfil extends AppCompatActivity {
 
 TextView descripcion,tel1,tel2,ubi1,ubi2,correo1,correo2;
 ImageView ivperfil;
 
+     ArrayList<Integer> imagenes;
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +51,6 @@ ImageView ivperfil;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         this.setTitle(nombre);
-
         descripcion = (TextView) findViewById(R.id.tvInfoEmpresa);
         tel1=(TextView) findViewById(R.id.tvNumber1);
         tel2=(TextView) findViewById(R.id.tvNumber2);
@@ -53,7 +62,11 @@ ImageView ivperfil;
         Drawable drawable =getResources().getDrawable(idimagen);
 
         descripcion.setText("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam magni consequatur architecto nobis neque atque, officia laudantium cum dolore tempora eius nam repudiandae blanditiis consectetur");
-
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/cabo.otf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
 
         Glide.with(getApplicationContext()).load("").placeholder(idimagen).centerCrop().into(ivperfil);
 
@@ -80,51 +93,26 @@ ImageView ivperfil;
         View view  = this.getLayoutInflater().inflate(R.layout.image_dialog, null);
         dialog.setContentView(view);
 
-        TextView close = dialog.findViewById(R.id.close);
-        TextView next = dialog.findViewById(R.id.next);
-        TextView prev = dialog.findViewById(R.id.previous);
-        final ImageView imageView=dialog.findViewById(R.id.imagendialog);
-
-
-
-        final ArrayList<Integer> imagenes= new ArrayList<>();
-
+        imagenes= new ArrayList<>();
         imagenes.add(R.drawable.resuno);
         imagenes.add(R.drawable.resdos);
         imagenes.add(R.drawable.restres);
         imagenes.add(R.drawable.rescuatro);
-        final int pos=0;
 
+        CarouselView carouselView= dialog.findViewById(R.id.carouselView);
+        carouselView.setPageCount(imagenes.size());
+        carouselView.setImageListener(imageListener);
 
-        Glide.with(getApplicationContext()).load(imagenes.get(pos)).asBitmap().centerCrop().into(imageView);
-
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.cancel();
-            }
-        });
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-
-                Glide.with(getApplicationContext()).load(imagenes.get(pos+1)).asBitmap().centerCrop().into(imageView);
-
-            }
-        });
-
-        prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Glide.with(getApplicationContext()).load(imagenes.get(pos-1)).asBitmap().centerCrop().into(imageView);
-
-            }
-        });
 
 
         dialog.show();
         dialog.setCanceledOnTouchOutside(true);
     }
+
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(imagenes.get(position));
+        }
+    };
 }

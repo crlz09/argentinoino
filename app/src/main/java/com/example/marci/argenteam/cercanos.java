@@ -1,5 +1,6 @@
 package com.example.marci.argenteam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,12 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by carlosm on 09/01/2018.
  */
 
 public class cercanos extends AppCompatActivity {
 
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     public elementoscercanos getItem(int position) {
         return elementoscercanos.ITEMS[position];
@@ -21,7 +28,7 @@ public class cercanos extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nuevocer);
+        setContentView(R.layout.activity_cercanos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String titulo = getIntent().getExtras().getString("categoria");
@@ -30,9 +37,12 @@ public class cercanos extends AppCompatActivity {
         final GridView gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(new GridAdapter(getApplicationContext()));
 
-
-
-
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/cabo.otf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+        
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
