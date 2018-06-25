@@ -19,7 +19,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
  * Created by marci on 19/11/2017.
  */
 
-public class    GridAdapter extends BaseAdapter {
+public class GridAdapter extends BaseAdapter {
     public String nom, correo, telefono, ciu ,dist;
     public int drawid;
 

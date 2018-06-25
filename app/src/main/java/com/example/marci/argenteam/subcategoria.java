@@ -27,10 +27,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class subcategoria extends AppCompatActivity {
     LinearLayout categoria,categoriasss;
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -40,12 +36,6 @@ public class subcategoria extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Toast.makeText(this, "Selecciona una Subcategoría", Toast.LENGTH_LONG).show();
-
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/cabo.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
 
 
         String cat =  getIntent().getExtras().getString("nombre");
@@ -71,7 +61,7 @@ public class subcategoria extends AppCompatActivity {
         ArrayList<Integer> imagenes= new ArrayList();
         final ArrayList<String> descripcion = new ArrayList();
 
-        if (clave.equals("COMERCIOS")){
+        if (clave.equals("1")){
 
             imagenes.add(R.drawable.almacenes);
             imagenes.add(R.drawable.kioskos);
@@ -112,24 +102,24 @@ public class subcategoria extends AppCompatActivity {
             nombres.add("Otros");
 
 
-            descripcion.add("ALMACENES");
-            descripcion.add("KIOSKOS");
-            descripcion.add("FIAMBRERIAS");
-            descripcion.add("GRANJAS");
-            descripcion.add("PIZZERIAS");
-            descripcion.add("HELADERIAS");
-            descripcion.add("PUESTOS");
-            descripcion.add("LOCUTORIOS");
-            descripcion.add("FERRETERIAS");
-            descripcion.add("MUEBLERIAS");
-            descripcion.add("CONCESIONARIAS");
-            descripcion.add("CASAS DE REPUESTOS");
-            descripcion.add("GIMNASIOS");
-            descripcion.add("OPTICAS");
-            descripcion.add("ELECTRONICA");
-            descripcion.add("ROPA");
-            descripcion.add("EMPRENDIMIENTO");
-            descripcion.add("OTROSP");
+            descripcion.add("19");
+            descripcion.add("20");
+            descripcion.add("21");
+            descripcion.add("22");
+            descripcion.add("23");
+            descripcion.add("24");
+            descripcion.add("25");
+            descripcion.add("26");
+            descripcion.add("27");
+            descripcion.add("28");
+            descripcion.add("29");
+            descripcion.add("30");
+            descripcion.add("31");
+            descripcion.add("32");
+            descripcion.add("33");
+            descripcion.add("34");
+            descripcion.add("35");
+            descripcion.add("36");
 
         } else {
             imagenes.add(R.drawable.servicios_hogar);
@@ -155,16 +145,16 @@ public class subcategoria extends AppCompatActivity {
             nombres.add("Eventos");
             nombres.add("Otros");
 
-            descripcion.add("HOGAR");
-            descripcion.add("PROFESIONALES");
-            descripcion.add("CUIDADO");
-            descripcion.add("MASCOTAS");
-            descripcion.add("ESTETICA");
-            descripcion.add("MANTENIMIENTO");
-            descripcion.add("TECNICOS");
-            descripcion.add("PROFESORES");
-            descripcion.add("EVENTOS");
-            descripcion.add("OTROSS");
+            descripcion.add("37");
+            descripcion.add("38");
+            descripcion.add("39");
+            descripcion.add("40");
+            descripcion.add("41");
+            descripcion.add("42");
+            descripcion.add("43");
+            descripcion.add("44");
+            descripcion.add("45");
+            descripcion.add("46");
 
         }
 
@@ -192,10 +182,11 @@ public class subcategoria extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                 //   String nom = nombre.getText().toString();
-                 //   Toast.makeText(subcategoria.this, ""+nom, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(subcategoria.this, "hice click aqui", Toast.LENGTH_SHORT).show();
                     Intent vete = new Intent(getApplicationContext(),cercanos.class);
                     vete.putExtra("categoria",nombres.get(finalI));
                     vete.putExtra("descripcion",descripcion.get(finalI));
+                    vete.putExtra("origen","categorias");
                     startActivity(vete);
                 }
             });

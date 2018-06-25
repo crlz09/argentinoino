@@ -28,9 +28,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class categorias extends AppCompatActivity {
     LinearLayout categoria,categoriasss;
 
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -44,21 +41,16 @@ public class categorias extends AppCompatActivity {
         this.setTitle("Selecciona una categoría:");
         String direccion;
         Double lat, lon;
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/cabo.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
 
-        Boolean cercano = getIntent().getExtras().getBoolean("cercano");
-
-        if (cercano) {
-            direccion = getIntent().getExtras().getString("direccion");
-            lat = getIntent().getExtras().getDouble("latitud");
-            lon = getIntent().getExtras().getDouble("longitud");
-           /* Toast.makeText(this, "Mi direccion es: " + lat + "\n" + "lon: " + lon + "\n"
-                    + direccion, Toast.LENGTH_LONG).show();*/
-        }
+//        Boolean cercano = getIntent().getExtras().getBoolean("cercano");
+//
+//        if (cercano) {
+//            direccion = getIntent().getExtras().getString("direccion");
+//            lat = getIntent().getExtras().getDouble("latitud");
+//            lon = getIntent().getExtras().getDouble("longitud");
+//           /* Toast.makeText(this, "Mi direccion es: " + lat + "\n" + "lon: " + lon + "\n"
+//                    + direccion, Toast.LENGTH_LONG).show();*/
+//        }
 
         ArrayList<Integer> imagenes = new ArrayList();
         imagenes.add(R.drawable.comercios);
@@ -73,6 +65,7 @@ public class categorias extends AppCompatActivity {
         imagenes.add(R.drawable.centros_salud);
         imagenes.add(R.drawable.merenderos_comedores);
         imagenes.add(R.drawable.ofrezco_empleo);
+        imagenes.add(R.drawable.venta);
         imagenes.add(R.drawable.inscripcion);
         imagenes.add(R.drawable.abono_mensual);
         imagenes.add(R.drawable.tienda_oficial);
@@ -93,6 +86,7 @@ public class categorias extends AppCompatActivity {
         nombres.add("Centros de salud");
         nombres.add("Merenderos / comedores");
         nombres.add("Ofrezco empleo");
+        nombres.add("Venta de garaje");
         nombres.add("Inscripción");
         nombres.add("Mensualidad");
         nombres.add("Tienda Argendapp");
@@ -100,23 +94,24 @@ public class categorias extends AppCompatActivity {
         nombres.add("Preguntas Frecuentes");
 
         final ArrayList<String> clave = new ArrayList();
-        clave.add("COMERCIOS");
-        clave.add("SERVICIOS");
-        clave.add("VENTASPM");
-        clave.add("PROMOCIONES");
-        clave.add("DESTACADOS");
-        clave.add("REVENDEDORES");
-        clave.add("ENVIOSTRANSPORTE");
-        clave.add("CENTROSAD");
-        clave.add("CENTROSE");
-        clave.add("CENTROSS");
-        clave.add("MERENDEROS");
-        clave.add("EMPLEO");
-        clave.add("INSCRIPCION");
-        clave.add("MENSUALIDAD");
-        clave.add("ARGENDAPP");
-        clave.add("CONCURSOS");
-        clave.add("FAQS");
+        clave.add("1");
+        clave.add("2");
+        clave.add("3");
+        clave.add("4");
+        clave.add("5");
+        clave.add("6");
+        clave.add("7");
+        clave.add("8");
+        clave.add("9");
+        clave.add("10");
+        clave.add("11");
+        clave.add("12");
+        clave.add("13");
+        clave.add("14");
+        clave.add("15");
+        clave.add("16");
+        clave.add("17");
+        clave.add("18");
 
 
         categoriasss = findViewById(R.id.raizcat);
@@ -140,17 +135,22 @@ public class categorias extends AppCompatActivity {
             final int finalI = i;
             categoria.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    if(clave.get(finalI).equals("COMERCIOS") || (clave.get(finalI).equals("SERVICIOS"))){
+                    if(clave.get(finalI).equals("1") || (clave.get(finalI).equals("2"))){
                         Intent sub= new Intent(getApplicationContext(),subcategoria.class);
+
+                        sub.putExtra("origen", "categorias");
                         sub.putExtra("nombre", nombres.get(finalI));
                         sub.putExtra("clave", clave.get(finalI));
                         startActivity(sub);
+//                        Toast.makeText(categorias.this, "P-"+finalI, Toast.LENGTH_SHORT).show();
                     }else {Intent vete = new Intent(getApplicationContext(),cercanos.class);
+
+                        vete.putExtra("origen", "categorias");
                         vete.putExtra("categoria",nombres.get(finalI));
                         vete.putExtra("descripcion",clave.get(finalI));
-                        startActivity(vete);}//intent de activity categoria.
-
-
+                        startActivity(vete);
+//                        Toast.makeText(categorias.this, "S-"+finalI, Toast.LENGTH_SHORT).show();
+                    }//intent de activity categoria.
                 }
             });
             categoriasss.addView(categoria);

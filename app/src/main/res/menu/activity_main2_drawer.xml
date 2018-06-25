@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_action_favoritos"
+            android:title="Favoritos" />
+
+        <item
+            android:id="@+id/nav_camera1"
+            android:title="Inscripción Vendedores" />
+
+        <item
+            android:id="@+id/nav_camera6"
+            android:title="Inscripción Servicios" />
+
+        <item
+            android:id="@+id/nav_camera2"
+            android:title="Inscripción Envíos/Transp" />
+
+        <item
+            android:id="@+id/nav_camera3"
+            android:title="Inscripción Centros" />
+
+        <item
+            android:id="@+id/nav_camera4"
+            android:title="Inscripción Revendedores" />
+
+        <item
+            android:id="@+id/nav_camera5"
+            android:title="Inscripción Venta de Garaje" />
+
+        <item
+            android:id="@+id/nav_camera7"
+            android:title="Abono Vendedores" />
+
+        <item
+            android:id="@+id/nav_camera8"
+            android:title="Abono Servicios" />
+
+        <item
+            android:id="@+id/nav_camera9"
+            android:title="Abono Envíos/Transporte" />
+
+        <item
+            android:id="@+id/nav_camera10"
+            android:title="Abono Centros" />
+
+        <item
+            android:id="@+id/nav_camera11"
+            android:title="Abono Revendedores" />
+
+        <item
+            android:id="@+id/nav_camera12"
+            android:title="Abono Venta de Garaje" />
+
+        <item
+            android:id="@+id/nav_camera133"
+            android:icon="@drawable/ic_star_border_white_24dp"
+            android:title="Puntuar aplicación" />
+
+        <item
+            android:id="@+id/nav_camera13"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Terminos y condiciones" />
+
+    </group>
+
+    <item android:title="Redes Sociales">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="YouTube" />
+        </menu>
+    </item>
+
+    <item android:title="Argendapp © 2018">
+        <menu>
+            <item
+                android:id="@+id/nav_share3"/>
+        </menu>
+    </item>
+</menu>

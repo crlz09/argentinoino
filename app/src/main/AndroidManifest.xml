@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,30 +16,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.marci.argenteam.MainActivity">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCz7EgboS5aXSdng_A-mV6KLgrrRAdf8Hg" />
+
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".Busqueda" />
+        <activity
+            android:name=".cercanos"
+            android:label="cercanos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".categorias"
+            android:label="@string/title_activity_categorias"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".subcategoria"
+            android:label="@string/title_activity_subcategoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".perfil"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.marci.argenteam.Busqueda" />
-        <activity
-            android:name="com.example.marci.argenteam.cercanos"
-            android:label="cercanos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name="com.example.marci.argenteam.categorias"
-            android:label="@string/title_activity_categorias"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.example.marci.argenteam.subcategoria"
-            android:label="@string/title_activity_subcategoria"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.example.marci.argenteam.perfil"
-            android:label="@string/title_activity_perfil"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
